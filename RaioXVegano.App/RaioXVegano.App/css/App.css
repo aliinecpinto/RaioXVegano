@@ -1,0 +1,122 @@
+﻿button {
+    background-color: #019021;
+    font-family: "Open Sans";
+    font-size: 25;
+    font-weight: bolder;
+    color: #FFFFFF;
+}
+
+    button.btn {
+        border: 1 solid transparent;
+        line-height: 1.5;
+        border-radius: 25;
+        text-align: center;
+        vertical-align: central;
+    }
+
+        button.btn.btn-light {
+            color: #212529;
+            background-color: #f8f9fa;
+            border-color: #f8f9fa;
+        }
+
+label {
+    font-family: "Open Sans";
+    font-size: 25;
+    color: black;
+}
+
+    label.validation {
+        color: #b20000;
+        font-size: 18;
+    }
+
+    label.label-primary {
+        color: #004085;
+        font-size: 18;
+    }
+
+    label.label-secondary {
+        color: #383d41;
+        font-size: 18;
+    }
+
+    label.label-success {
+        color: #155724;
+        font-size: 18;
+    }
+
+    label.label-danger {
+        color: #721c24;
+        font-size: 18;
+    }
+
+    label.label-warning {
+        color: #856404;
+        font-size: 18;
+    }
+
+    label.label-info {
+        color: #0c5460;
+        font-size: 18;
+    }
+
+    label.label-light {
+        color: #818182;
+        font-size: 18;
+    }
+
+    label.label-dark {
+        color: #1b1e21;
+        font-size: 18;
+    }
+
+.alert {
+    margin: 10;
+    border: 1 solid transparent;
+    border-radius: 10;
+    padding: 20;
+}
+
+    .alert.alert-primary {
+        background-color: #cce5ff;
+        border-color: #b8daff;
+    }
+
+    .alert.alert-secondary {
+        background-color: #e2e3e5;
+        border-color: #d6d8db;
+    }
+
+    .alert.alert-success {
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+
+    .alert.alert-danger {
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+    }
+
+    .alert.alert-warning {
+        background-color: #fff3cd;
+        border-color: #ffeeba;
+    }
+
+    .alert.alert-info {
+        background-color: #d1ecf1;
+        border-color: #bee5eb;
+    }
+
+    .alert.alert-light {
+        background-color: #fefefe;
+        border-color: #fdfdfe;
+    }
+
+    .alert.alert-dark {
+        background-color: #d6d8d9;
+        border-color: #c6c8ca;
+    }
+
+
+/*TODO : Tentar descobrir como colocar a cor do radiobutton no css*/

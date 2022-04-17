@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3315E254-8100-420D-80EC-5995A30DF748}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RaioXVegano.entities</RootNamespace>
+    <AssemblyName>RaioXVegano.entities</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Acao\AtualizaProdutoRequest.cs" />
+    <Compile Include="Acao\AtualizaProdutoResponse.cs" />
+    <Compile Include="Acao\IBaseAcaoRequest.cs" />
+    <Compile Include="Acao\IBaseAcaoResponse.cs" />
+    <Compile Include="Acao\CadastraProdutoRequest.cs" />
+    <Compile Include="Acao\CadastraProdutoResponse.cs" />
+    <Compile Include="Acao\ConsultaProdutoPorCodigoDeBarrasRequest.cs" />
+    <Compile Include="Acao\ConsultaProdutoPorCodigoDeBarrasResponse.cs" />
+    <Compile Include="Acao\SalvarInformacoesLogRequest.cs" />
+    <Compile Include="Acao\SalvarInformacoesLogResponse.cs" />
+    <Compile Include="App\AtualizaProdutoAppRequest.cs" />
+    <Compile Include="App\AtualizaProdutoAppResponse.cs" />
+    <Compile Include="App\CadastraProdutoAppRequest.cs" />
+    <Compile Include="App\CadastraProdutoAppResponse.cs" />
+    <Compile Include="App\ConsultaProdutoPorCodigoDeBarrasAppRequest.cs" />
+    <Compile Include="App\ConsultaProdutoPorCodigoDeBarrasAppResponse.cs" />
+    <Compile Include="App\IBaseRequestApp.cs" />
+    <Compile Include="App\IBaseResponseApp.cs" />
+    <Compile Include="App\SalvarInformacoesLogAppRequest.cs" />
+    <Compile Include="App\SalvarInformacoesLogAppResponse.cs" />
+    <Compile Include="Enum\CodigoRetorno.cs" />
+    <Compile Include="Form\IBaseForm.cs" />
+    <Compile Include="MapMensagens\MapCampoTelaMsgProduto.cs" />
+    <Compile Include="MapMensagens\MapMensagens.cs" />
+    <Compile Include="Produto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\RaioXVegano.Util\RaioXVegano.Util\RaioXVegano.Util.csproj">
+      <Project>{8b9ed7ca-49b2-43b2-9c5c-1b67cc6136a5}</Project>
+      <Name>RaioXVegano.Util</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RaioXVegano.Exception\RaioXVegano.exception.csproj">
+      <Project>{2e998a4d-5d31-4738-a5f7-d57274fe3687}</Project>
+      <Name>RaioXVegano.exception</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

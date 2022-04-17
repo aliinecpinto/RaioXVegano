@@ -1,0 +1,17 @@
+﻿################################################################################
+# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/.vs/*
+/RaioXVegano*/.vs
+/RaioXVegano*/.vs/*
+/RaioXVegano*/packages
+/RaioXVegano*/packages/*
+/RaioXVegano*/RaioXVegano*/bin/
+/RaioXVegano*/RaioXVegano*/bin/*
+/RaioXVegano*/RaioXVegano*/obj/
+/RaioXVegano*/RaioXVegano*/obj/*
+/RaioXVegano*/RaioXVegano*/*user
+/RaioXVegano*/RaioXVegano*/Properties/PublishProfiles/*user
+/RaioXVegano.*/Logs/*

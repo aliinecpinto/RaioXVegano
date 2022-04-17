@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+             x:Class="RaioXVegano.App.Pages.ManutencaoProduto">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <Frame x:Name="FrameAlert" IsVisible="false">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition  Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label x:Name="LabelAlert" IsVisible="false" Grid.Row="0" Grid.Column="0" 
+                           HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+                        <Button x:Name="EmailAlert" ImageSource="email" Clicked="EnviarEmail" IsVisible="false" class="btn,btn-light" Grid.Row="0" Grid.Column="1" 
+                            HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                    </Grid>
+                </Frame>
+
+                <Label x:Name="CodigoDeBarras" IsVisible="false" />
+                <Label x:Name="IdProduto" IsVisible="false" />
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Image x:Name="ImagemProduto" WidthRequest="250" HeightRequest="250" HorizontalOptions="Fill" VerticalOptions="Fill" />
+                </StackLayout>
+
+                <Entry x:Name="NomeProduto" Placeholder="Nome" Visual="Material" />
+                <Label x:Name="NomeProdutoValidacao" class="validation" IsVisible="false" />
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                    <input:RadioButtonGroupView x:Name="IsProdutoVegano" Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal">
+                            <input:RadioButton Text="Vegano" Value="1" CircleColor="#019021" Color="#019021" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <input:RadioButton Text="Não Vegano" Value="0" CircleColor="#019021" Color="#019021" />
+                        </StackLayout>
+                    </input:RadioButtonGroupView>
+                </StackLayout>
+
+
+                <Label x:Name="TipoProdutoValidacao" class="validation" IsVisible="false" />
+
+                <Entry x:Name="Motivo" Placeholder="Motivo" Visual="Material" />
+                <Label x:Name="MotivoValidacao" class="validation" IsVisible="false" />
+
+                <Editor x:Name="Ingredientes" Placeholder="Ingredientes" Visual="Material" />
+                <Label x:Name="IngredientesValidacao" class="validation" IsVisible="false" />
+
+                <Button x:Name="BtnCadastrarProduto" Text="Cadastrar Produto" Visual="Material" Clicked="CadastrarProduto"
+                        VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
+                <Button x:Name="BtnAlterarProduto" Text="Alterar Produto" Visual="Material" Clicked="AlterarProduto"
+                        VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

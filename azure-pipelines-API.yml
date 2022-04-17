@@ -1,0 +1,83 @@
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
+
+trigger:
+  branches:
+    include:
+      - master
+
+  paths:
+    exclude:
+      - RaioXVegano.App/*
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  slnUtil: '**/RaioXVegano.Util.sln'
+  slnApi: '**/RaioXVegano.Api.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Debug'
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  displayName: Util sln Restore
+  inputs:
+    restoreSolution: '$(slnUtil)'
+
+- task: VSBuild@1
+  displayName: Util sln Build
+  inputs:
+    solution: '$(slnUtil)'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: NuGetCommand@2
+  displayName: Api sln Restore
+  inputs:
+    restoreSolution: '$(slnApi)'
+
+- task: VSBuild@1
+  displayName: Api sln Build
+  inputs:
+    solution: '$(slnApi)'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: CmdLine@2
+  displayName: Generate Test Report
+  inputs:
+    script: |
+      echo ********** starting code coverage report
+
+      "$(System.DefaultWorkingDirectory)\RaioXVegano.Api\packages\OpenCover.4.7.922\tools\OpenCover.Console.exe" -target:"$(System.DefaultWorkingDirectory)\RaioXVegano.Api\packages\NUnit.ConsoleRunner.3.12.0\tools\nunit3-console.exe" -targetargs:"$(System.DefaultWorkingDirectory)\RaioXVegano.Api\RaioXVegano.testes\bin\Debug\RaioXVegano.testes.dll" -filter:"+[*]*  -[RaioXVegano.Util]* -[RaioXVegano.Api]* -[RaioXVegano.entities]* -[RaioXVegano.ibo]* -[RaioXVegano.so]* -[RaioXVegano.iso]* -[RaioXVegano.di]* -[nunit.framework]*" -register -output:"OpenCover.xml"
+
+      echo ********** code coverage report completed
+
+      echo ********** converting to cobertura 
+
+      "$(System.DefaultWorkingDirectory)\RaioXVegano.Api\packages\OpenCoverToCoberturaConverter.0.3.4\tools\OpenCoverToCoberturaConverter.exe" -input:OpenCover.xml -output:Cobertura.xml -sources:$(System.DefaultWorkingDirectory)
+      
+      echo ********** report converted
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
+
+- task: PublishTestResults@2
+  displayName: Publish Test Result
+  inputs:
+    testResultsFormat: 'NUnit'
+    testResultsFiles: '**/TestResult.xml'
+    failTaskOnFailedTests: true
+
+- task: PublishCodeCoverageResults@1
+  displayName: Publish Coverage Result
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)\Cobertura.xml'
+    pathToSources: '$(System.DefaultWorkingDirectory)'
+
